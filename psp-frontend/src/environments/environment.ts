@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  paypal_service_url:"http://localhost:8000/paypal-service",
+  bank_service_url:"http://localhost:8000/bank-service",
+  crypto_service_url:"http://localhost:8000/crypto-service",
+  psp_service_url:"http://localhost:8000/psp-service"
 };
 
 /*

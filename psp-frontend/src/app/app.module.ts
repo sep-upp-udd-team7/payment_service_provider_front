@@ -13,6 +13,9 @@ import { PersonalInfoComponent } from './components/personal-info/personal-info.
 import { PaypalSuccessComponent } from './components/paypal-success/paypal-success.component';
 import { PaymentOptionsComponent } from './components/payment-options/payment-options.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PaypalPaymentProcessingComponent } from './components/paypal-payment-processing/paypal-payment-processing.component';
+import { PaypalPaymentCancelledComponent } from './components/paypal-payment-cancelled/paypal-payment-cancelled.component';
+import { InternalErrorComponent } from './components/internal-error/internal-error.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CardInfoComponent,
     PersonalInfoComponent,
     PaypalSuccessComponent,
-    PaymentOptionsComponent
+    PaymentOptionsComponent,
+    PaypalPaymentProcessingComponent,
+    PaypalPaymentCancelledComponent,
+    InternalErrorComponent
   ],
   imports: [
     BrowserModule,

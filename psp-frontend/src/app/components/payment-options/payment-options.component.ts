@@ -1,56 +1,69 @@
 import { Component, OnInit } from '@angular/core';
+import { faWindowRestore } from '@fortawesome/free-solid-svg-icons';
+import { PaypalService } from 'src/app/service/paypal.service';
 
 @Component({
   selector: 'app-payment-options',
   templateUrl: './payment-options.component.html',
-  styleUrls: ['./payment-options.component.scss']
+  styleUrls: ['./payment-options.component.scss'],
 })
 export class PaymentOptionsComponent implements OnInit {
+  selectedPaypal: boolean = false;
+  selectedCrypto: boolean = false;
+  selectedBankCard: boolean = false;
+  selectedQr: boolean = false;
 
-  selectedPaypal:boolean=false;
-  selectedCrypto:boolean=false;
-  selectedBankCard:boolean=false;
-  selectedQr:boolean=false;
-
-  validate(){
-    if (this.selectedBankCard==false && this.selectedCrypto==false && this.selectedPaypal==false && this.selectedQr==false){
+  validate(): boolean {
+    let isValid = true;
+    if (
+      this.selectedBankCard == false &&
+      this.selectedCrypto == false &&
+      this.selectedPaypal == false &&
+      this.selectedQr == false
+    ) {
       alert('Select Payment method');
+      isValid = false;
     }
+    return isValid;
   }
-  constructor() { }
+  constructor(private paypalService: PaypalService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  qrPaymentSelected(){
-    this.selectedQr=!this.selectedQr;
-    this.selectedCrypto=false;
-    this.selectedBankCard=false;
-    this.selectedPaypal=false;
-  }
-
-  paypalPaymentSelected(){
-    this.selectedPaypal=!this.selectedPaypal;
-    this.selectedCrypto=false;
-    this.selectedBankCard=false;
-    this.selectedQr=false;
+  qrPaymentSelected() {
+    this.selectedQr = !this.selectedQr;
+    this.selectedCrypto = false;
+    this.selectedBankCard = false;
+    this.selectedPaypal = false;
   }
 
-  cryptoPaymentSelected(){
-    this.selectedCrypto=!this.selectedCrypto;
-    this.selectedPaypal=false;
-    this.selectedBankCard=false;
-    this.selectedQr=false;
+  paypalPaymentSelected() {
+    this.selectedPaypal = !this.selectedPaypal;
+    this.selectedCrypto = false;
+    this.selectedBankCard = false;
+    this.selectedQr = false;
   }
 
-  bankCardPaymentSelected(){
-    this.selectedBankCard=!this.selectedBankCard;
-    this.selectedPaypal=false;
-    this.selectedCrypto=false;
-    this.selectedQr=false;
+  cryptoPaymentSelected() {
+    this.selectedCrypto = !this.selectedCrypto;
+    this.selectedPaypal = false;
+    this.selectedBankCard = false;
+    this.selectedQr = false;
   }
 
-  proceed(){
-    this.validate()
+  bankCardPaymentSelected() {
+    this.selectedBankCard = !this.selectedBankCard;
+    this.selectedPaypal = false;
+    this.selectedCrypto = false;
+    this.selectedQr = false;
+  }
+
+  proceed() {
+    this.validate();
+    if (this.selectedPaypal) {
+      this.paypalService.createPayment().subscribe((data)=>{alert('OK'),window.location.href=data.url},(error)=>{
+        alert('Greska');
+      });
+    }
   }
 }

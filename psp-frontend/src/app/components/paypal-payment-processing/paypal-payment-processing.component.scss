@@ -1,0 +1,25 @@
+.loader-container {
+    width: 100%;
+    min-height: calc(100vh + 12px);
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgb(221, 221, 240);
+      
+    display: flex;
+  }
+  
+  p {
+    font-weight: 900;
+  }
+  
+  .loader-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 100px;
+    height: 100px;
+    
+  }

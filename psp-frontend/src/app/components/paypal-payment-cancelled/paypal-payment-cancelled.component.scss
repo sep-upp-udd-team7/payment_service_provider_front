@@ -1,0 +1,26 @@
+
+.image{
+    height:100vh; background-size:cover; width:auto;
+    background-image:url("./../../../assets/canceled-payment-background.jpg");
+    background-position:50% 50%;
+  }
+
+.container{
+    display: flex;
+    justify-content: center;
+            align-items: center;
+            height: 500px;
+            flex-direction: column;
+}
+
+h1{
+    color: rgb(9, 8, 58)
+}
+
+button{
+    width: 150px;
+    height: 40px;
+    background-color: aliceblue;
+    border-radius: 5px;
+    
+}
