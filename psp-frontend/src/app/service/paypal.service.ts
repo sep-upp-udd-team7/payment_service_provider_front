@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { paypalUrl } from '../app-global';
 import { CreatePaypalPayment } from '../model/CreatePaypalPayment';
 import { ExecutePaypalPayment } from '../model/ExecutePaypalPayment';
@@ -9,6 +8,7 @@ import { ExecutePaypalPayment } from '../model/ExecutePaypalPayment';
   providedIn: 'root'
 })
 export class PaypalService {
+  
   
   private url=paypalUrl;
 
@@ -34,5 +34,9 @@ export class PaypalService {
 
   cancelPayment(trancationId:string){
     return this._http.get(`${this.url}/execute/${trancationId}`);
+  }
+
+  confirmSubscription(token: string) {
+    return this._http.get(`${this.url}/subscriptions/execute/${token}`);
   }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 import { PaypalService } from 'src/app/service/paypal.service';
 
 @Component({

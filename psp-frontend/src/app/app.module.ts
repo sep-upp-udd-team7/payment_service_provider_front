@@ -16,6 +16,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PaypalPaymentProcessingComponent } from './components/paypal-payment-processing/paypal-payment-processing.component';
 import { PaypalPaymentCancelledComponent } from './components/paypal-payment-cancelled/paypal-payment-cancelled.component';
 import { InternalErrorComponent } from './components/internal-error/internal-error.component';
+import { SubscriptionProcessingComponent } from './components/subscription-processing/subscription-processing.component';
+import { SubscriptionCancelledComponent } from './components/subscription-cancelled/subscription-cancelled.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { InternalErrorComponent } from './components/internal-error/internal-err
     PaymentOptionsComponent,
     PaypalPaymentProcessingComponent,
     PaypalPaymentCancelledComponent,
-    InternalErrorComponent
+    InternalErrorComponent,
+    SubscriptionProcessingComponent,
+    SubscriptionCancelledComponent
   ],
   imports: [
     BrowserModule,
