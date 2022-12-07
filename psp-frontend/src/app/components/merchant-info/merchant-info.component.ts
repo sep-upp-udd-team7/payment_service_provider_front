@@ -11,8 +11,16 @@ export class MerchantInfoComponent implements OnInit {
 
   merchantId: string = '';
   merchantPassword: string = '';
+  hide = true;
 
   ngOnInit(): void {
+  }
+
+  enterMerchantInfos() {
+    if (this.merchantId == '' || this.merchantPassword == '') {
+      return
+    }
+    alert('TODO')
   }
 
 }
