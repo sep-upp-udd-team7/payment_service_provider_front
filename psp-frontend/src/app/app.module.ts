@@ -16,6 +16,7 @@ import { PaypalPaymentProcessingComponent } from './components/paypal-payment-pr
 import { PaypalPaymentCancelledComponent } from './components/paypal-payment-cancelled/paypal-payment-cancelled.component';
 import { InternalErrorComponent } from './components/internal-error/internal-error.component';
 import { MerchantInfoComponent } from './components/merchant-info/merchant-info.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MerchantInfoComponent } from './components/merchant-info/merchant-info.
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserAnimationsModule
     
   ],
   providers: [
