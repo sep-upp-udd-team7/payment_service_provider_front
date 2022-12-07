@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 import { PaypalService } from 'src/app/service/paypal.service';
 
@@ -26,7 +27,7 @@ export class PaymentOptionsComponent implements OnInit {
     }
     return isValid;
   }
-  constructor(private paypalService: PaypalService) {}
+  constructor(private paypalService: PaypalService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -64,6 +65,11 @@ export class PaymentOptionsComponent implements OnInit {
       this.paypalService.createPayment().subscribe((data)=>{alert('OK'),window.location.href=data.url},(error)=>{
         alert('Greska');
       });
+    }
+    if (this.selectedBankCard) {
+      // Ako je acquirer -> unosi merchant podatke
+      this.router.navigate(['merchant-info']);
+      // Ako je issuer -> redirektuje se na sajt banke PRODAVCA - unosi PAN, cvv itd.
     }
   }
 }
