@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { CardInfoComponent } from './components/card-info/card-info.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PersonalInfoComponent } from './components/personal-info/personal-info.component';
@@ -16,19 +15,25 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PaypalPaymentProcessingComponent } from './components/paypal-payment-processing/paypal-payment-processing.component';
 import { PaypalPaymentCancelledComponent } from './components/paypal-payment-cancelled/paypal-payment-cancelled.component';
 import { InternalErrorComponent } from './components/internal-error/internal-error.component';
+import { MerchantInfoComponent } from './components/merchant-info/merchant-info.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field'; 
+import { MatIconModule } from '@angular/material/icon'; 
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignUpComponent,
-    CardInfoComponent,
     PersonalInfoComponent,
     PaypalSuccessComponent,
     PaymentOptionsComponent,
     PaypalPaymentProcessingComponent,
     PaypalPaymentCancelledComponent,
-    InternalErrorComponent
+    InternalErrorComponent,
+    MerchantInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -36,8 +41,12 @@ import { InternalErrorComponent } from './components/internal-error/internal-err
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FontAwesomeModule
-    
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
   ],
   providers: [
     {
