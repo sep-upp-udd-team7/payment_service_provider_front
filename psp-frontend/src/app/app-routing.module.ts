@@ -9,6 +9,7 @@ import { PaypalPaymentProcessingComponent } from './components/paypal-payment-pr
 import { PaypalPaymentCancelledComponent } from './components/paypal-payment-cancelled/paypal-payment-cancelled.component';
 import { InternalErrorComponent } from './components/internal-error/internal-error.component';
 import { MerchantInfoComponent } from './components/merchant-info/merchant-info.component';
+import { NewPaymentOptionComponent } from './components/new-payment-option/new-payment-option.component';
 
 const routes: Routes = [
   {
@@ -48,7 +49,11 @@ const routes: Routes = [
   {
     path: 'merchant-info',
     component: MerchantInfoComponent,
-  }
+  },
+  {
+    path: 'new-payment-option',
+    component: NewPaymentOptionComponent,
+  },
 ];
 
 @NgModule({
