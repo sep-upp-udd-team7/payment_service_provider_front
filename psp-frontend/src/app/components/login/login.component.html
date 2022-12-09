@@ -1,11 +1,10 @@
 <div class="container mx-auto px-4 h-full" >
     <div class="flex content-center items-center justify-center h-full">
-      <div class="w-full lg:w-4/12 px-4" style="padding-top: 150px;" >
+      <div class="w-full lg:w-4/12 px-4" style="padding-top: 150px; padding-bottom: 150px;" >
         <div
-          class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0"
-        >
+          class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0" style="padding-bottom: 20px;">
           
-          <div class="flex-auto px-4 lg:px-10 py-10 pt-0" >
+          <!-- <div class="flex-auto px-4 lg:px-10 py-10 pt-0" >
             <p *ngIf="notification" [class]="notification.msgType">{{notification.msgBody}}</p>
             <br>
             
@@ -60,6 +59,23 @@
                 </button>
               </div>
             </form>
+            </div> -->
+            <div class="text-center mt-6" (click)="addNewPaymentOption()">
+              <button
+                class="bg-blueGray-800  text-white active:bg-gray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                type="button"
+              >
+                Add new payment option
+              </button>
+            </div>
+
+            <div class="text-center mt-6" (click)="selectPaymentOption()" >
+              <button
+                class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                type="button"
+              >
+               Select payment option
+              </button>
           </div>
         </div>
   

@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 import { PaypalService } from 'src/app/service/paypal.service';
 
 @Component({
-  selector: 'app-payment-options',
-  templateUrl: './payment-options.component.html',
-  styleUrls: ['./payment-options.component.scss'],
+  selector: 'app-new-payment-option',
+  templateUrl: './new-payment-option.component.html',
+  styleUrls: ['./new-payment-option.component.scss']
 })
-export class PaymentOptionsComponent implements OnInit {
+export class NewPaymentOptionComponent implements OnInit {
+
+  constructor(private paypalService: PaypalService, private router: Router) {}
+
+  ngOnInit(): void {
+  }
+
   selectedPaypal: boolean = false;
   selectedCrypto: boolean = false;
   selectedBankCard: boolean = false;
@@ -27,9 +32,6 @@ export class PaymentOptionsComponent implements OnInit {
     }
     return isValid;
   }
-  constructor(private paypalService: PaypalService, private router: Router) {}
-
-  ngOnInit(): void {}
 
   qrPaymentSelected() {
     this.selectedQr = !this.selectedQr;
@@ -67,7 +69,8 @@ export class PaymentOptionsComponent implements OnInit {
       });
     }
     if (this.selectedBankCard) {
-      // http zahtev da se validira acquirer
+      this.router.navigate(['merchant-info']);
     }
   }
+
 }

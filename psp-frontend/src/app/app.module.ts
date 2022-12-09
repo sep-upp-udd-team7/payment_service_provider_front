@@ -21,6 +21,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field'; 
 import { MatIconModule } from '@angular/material/icon'; 
 import { MatInputModule } from '@angular/material/input';
+import { NewPaymentOptionComponent } from './components/new-payment-option/new-payment-option.component';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { MatInputModule } from '@angular/material/input';
     PaypalPaymentProcessingComponent,
     PaypalPaymentCancelledComponent,
     InternalErrorComponent,
-    MerchantInfoComponent
+    MerchantInfoComponent,
+    NewPaymentOptionComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +51,7 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
+    MatSelectModule,
   ],
   providers: [
     {
