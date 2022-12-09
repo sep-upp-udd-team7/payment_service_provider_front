@@ -52,4 +52,11 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/signup']);
   }
 
+  addNewPaymentOption() {
+    this.router.navigate(['/new-payment-option']);
+  }
+
+  selectPaymentOption() {
+    this.router.navigate(['/select-payment-option']);
+  }
 }

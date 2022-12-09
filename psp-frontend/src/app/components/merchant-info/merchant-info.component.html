@@ -1,8 +1,8 @@
 <h1>TODO: Merchant informations</h1>
 <div> 
-    <div class="example-container">
-      <form class="example-form">
-      <mat-form-field appearance="fill" style="width: 300px; margin: auto; justify-content: center; display: flex;">
+    <div class="example-container" style="margin: auto; display: flex; justify-content: center;">
+      <form class="example-form" class="relative mb-3">
+      <mat-form-field appearance="fill"  class="border-0 px-3 py-3">
         <mat-label>Choose bank</mat-label>
         <mat-select [(ngModel)]="selectedValue" name="bank">
           <mat-option *ngFor="let bank of banks" [value]="bank.value">
@@ -11,17 +11,17 @@
         </mat-select>
       </mat-form-field><br>
     
-        <mat-form-field appearance="fill" style="width: 400px; margin: auto; justify-content: center; display: flex;">
+        <mat-form-field appearance="fill"  class="border-0 px-3 py-3">
             <mat-label>Enter merchant ID</mat-label>
             <input matInput type="text" name="merchantId" [(ngModel)]="merchantId" style="width: 400px;">
         </mat-form-field><br>
 
-        <mat-form-field appearance="fill" style="margin: auto; justify-content: center; display: flex;">
+        <mat-form-field appearance="fill"  class="border-0 px-3 py-3">
           <mat-label>Enter merchant password</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'" name="merchantPassword"  [(ngModel)]="merchantPassword" >
-          <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button> -->
+          </button>
         </mat-form-field> <br>
 
         <button mat-raised-button color="primary" style="margin: auto; justify-content: center; display: flex;" (click)="enterMerchantInfos()">Submit</button>
