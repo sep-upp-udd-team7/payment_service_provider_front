@@ -16,9 +16,11 @@ export class PaypalService {
 
    }
 
-  createPayment(){
+  createPayment(amount:string,transactionId:string,shopId:string){
     let body:CreatePaypalPayment={
-      amount:1
+      amount:amount,
+      transactionId:transactionId,
+      shopId:shopId
     }
     
     return this._http.post<any>(`${this.url}/create-payment`,body);
@@ -33,6 +35,6 @@ export class PaypalService {
   }
 
   cancelPayment(trancationId:string){
-    return this._http.get(`${this.url}/execute/${trancationId}`);
+    return this._http.get(`${this.url}/cancel-payment/${trancationId}`);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { faWindowRestore } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/service/auth.service';
 import { PaypalService } from 'src/app/service/paypal.service';
 
 @Component({
@@ -13,6 +14,10 @@ export class PaymentOptionsComponent implements OnInit {
   selectedCrypto: boolean = false;
   selectedBankCard: boolean = false;
   selectedQr: boolean = false;
+  token:string='';
+  amount:string='';
+  transactionId:string='';
+  shopId:string='';
 
   validate(): boolean {
     let isValid = true;
@@ -27,9 +32,28 @@ export class PaymentOptionsComponent implements OnInit {
     }
     return isValid;
   }
-  constructor(private paypalService: PaypalService, private router: Router) {}
+  constructor(private paypalService: PaypalService, private router: Router,private route: ActivatedRoute,private authService:AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //take token and decode it to get data
+    this.route.queryParams
+      .subscribe(params => {
+        console.log(params);
+        this.token=params['token'];
+        this.authService.decodeToken(this.token).subscribe((response)=>{
+          //need to load available payment methods
+          alert('token decoded successfully');
+          this.amount=response.amount;
+          this.transactionId=response.transactionId;
+          this.shopId=response.shopId;
+        },
+        (error)=>{
+          window.location.href="/internal-error"
+        })
+      }
+    );
+
+  }
 
   qrPaymentSelected() {
     this.selectedQr = !this.selectedQr;
@@ -62,7 +86,7 @@ export class PaymentOptionsComponent implements OnInit {
   proceed() {
     this.validate();
     if (this.selectedPaypal) {
-      this.paypalService.createPayment().subscribe((data)=>{alert('OK'),window.location.href=data.url},(error)=>{
+      this.paypalService.createPayment(this.amount,this.transactionId,this.shopId).subscribe((data)=>{alert('OK'),window.location.href=data.url},(error)=>{
         alert('Greska');
       });
     }

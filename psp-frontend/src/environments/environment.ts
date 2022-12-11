@@ -7,7 +7,7 @@ export const environment = {
   paypal_service_url:"http://localhost:8000/paypal-service",
   bank_service_url:"http://localhost:8000/bank-service",
   crypto_service_url:"http://localhost:8000/crypto-service",
-  psp_service_url:"http://localhost:8000/psp-service"
+  auth_service_url:"http://localhost:8000/auth-service"
 };
 
 /*
