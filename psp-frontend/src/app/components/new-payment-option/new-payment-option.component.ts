@@ -64,9 +64,6 @@ export class NewPaymentOptionComponent implements OnInit {
   proceed() {
     this.validate();
     if (this.selectedPaypal) {
-      this.paypalService.createPayment().subscribe((data)=>{alert('OK'),window.location.href=data.url},(error)=>{
-        alert('Greska');
-      });
     }
     if (this.selectedBankCard) {
       this.router.navigate(['merchant-info']);

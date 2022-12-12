@@ -1,3 +1,5 @@
 export interface CreatePaypalPayment{
-    amount:number;
+    amount:string;
+    transactionId:string;
+    shopId:string;
 }

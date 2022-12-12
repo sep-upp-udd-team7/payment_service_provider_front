@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import jwt_decode from "jwt-decode";
+import { authUrl } from '../app-global';
+import { TransactionData } from '../model/TransactionData';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ export class AuthService {
 
   constructor(private _http: HttpClient) { }
 
-  private auth_url = 'https://localhost:8080/api/auth';
+  private url=authUrl;
 
 
   login(user) {
@@ -25,7 +27,7 @@ export class AuthService {
     };
     console.log(body)
 
-    return this._http.post<any>(`${this.auth_url}/login`, body)
+    return this._http.post<any>(`${this.url}/login`, body)
       .pipe(map((res: any) => {
 
         let decoded: any = jwt_decode(res.accessToken)
@@ -46,8 +48,15 @@ export class AuthService {
     };
     console.log(body)
 
-    return this._http.post<any>(`${this.auth_url}/signup`, body)
+    return this._http.post<any>(`${this.url}/signup`, body)
 
+  }
+
+  decodeToken(token:string){
+    const body={
+      'content':token
+    }
+    return this._http.post<TransactionData>(`${this.url}/decode-token`,body);
   }
 
 
