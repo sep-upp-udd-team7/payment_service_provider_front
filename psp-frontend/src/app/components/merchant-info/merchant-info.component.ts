@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Bank } from 'src/app/model/Bank';
+import { CreditCardService } from 'src/app/service/credit-card.service';
 
 interface Food {
   value: string;
@@ -12,9 +16,14 @@ interface Food {
 })
 export class MerchantInfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private creditCardService: CreditCardService, private router: Router) { }
 
   ngOnInit(): void {
+    this.creditCardService.getBanks().subscribe(
+      data => {
+        console.log(data)
+        this.banks = data;
+      })
   }
 
   merchantId: string = '';
@@ -22,24 +31,31 @@ export class MerchantInfoComponent implements OnInit {
   hide = true;
   selectedValue: string;
 
-  banks: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
+  banks: Bank[] = [];
 
   enterMerchantInfos() {
     if (this.merchantId == '' || this.merchantPassword == '') {
       return
     }
     let body = {
+      "id": "",
       "merchantId": this.merchantId,
       "merchantPassword": this.merchantPassword,
-      "bankName": this.selectedValue
+      "bank": this.selectedValue
     }
     let reqBody = JSON.stringify(body)
     console.log(reqBody)
-    alert('TODO: sacuvati u PSP podatke o web shopu')
+    this.creditCardService.registerMerchant(reqBody).subscribe(
+      data => {
+        alert('Your web shop is registered for a new payment method - via bank')
+        this.router.navigate([''])
+      }, 
+      err => {
+        alert(err.error)
+        console.log(err.error)
+      })
+
+    // alert('TODO: sacuvati u PSP podatke o web shopu')
   }
 
 }

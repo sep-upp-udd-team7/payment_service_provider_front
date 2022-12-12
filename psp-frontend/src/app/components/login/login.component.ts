@@ -59,4 +59,8 @@ export class LoginComponent implements OnInit {
   selectPaymentOption() {
     this.router.navigate(['/select-payment-option']);
   }
+
+  addBankApplicationInPsp() {
+    this.router.navigate(['/select-payment-option']);
+  }
 }

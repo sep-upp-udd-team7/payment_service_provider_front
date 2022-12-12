@@ -1,12 +1,12 @@
-<h1>TODO: Merchant informations</h1>
+<h1>Web shop registration for payment via bank</h1>
 <div> 
     <div class="example-container" style="margin: auto; display: flex; justify-content: center;">
       <form class="example-form" class="relative mb-3">
       <mat-form-field appearance="fill"  class="border-0 px-3 py-3">
         <mat-label>Choose bank</mat-label>
         <mat-select [(ngModel)]="selectedValue" name="bank">
-          <mat-option *ngFor="let bank of banks" [value]="bank.value">
-            {{bank.viewValue}}
+          <mat-option *ngFor="let bank of banks" [value]="bank">
+            {{bank.name}}
           </mat-option>
         </mat-select>
       </mat-form-field><br>
