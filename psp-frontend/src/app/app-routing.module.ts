@@ -65,6 +65,10 @@ const routes: Routes = [
     path: 'bank-failed',
     component: BankFailedComponent,
   },
+  {
+    path: "new-payment-option",
+    component: NewPaymentOptionComponent,
+  },
   
 ];
 
