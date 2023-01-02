@@ -31,6 +31,6 @@ export class CreditCardService {
   }
 
   validateAcquirer(body: any) {
-    return this.http.post<any>(this.creditCardController + '/onboarding', body, this.httpOptions)
+    return this.http.post<any>(this.creditCardController + '/startPayment', body, this.httpOptions)
   }
 }

@@ -106,6 +106,9 @@ export class PaymentOptionsComponent implements OnInit {
         window.location.href = data.paymentUrl
       },(error)=>{
         alert('Greska');
+        if (error.error.includes('http')){
+          window.location.href = error.error
+        }
       });
     }
   }
