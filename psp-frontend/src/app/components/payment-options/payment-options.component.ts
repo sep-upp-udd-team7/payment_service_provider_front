@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/service/auth.service';
+import { CreditCardService } from 'src/app/service/credit-card.service';
 import { PaypalService } from 'src/app/service/paypal.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class PaymentOptionsComponent implements OnInit {
   amount:string='';
   transactionId:string='';
   shopId:string='';
+  merchantId: string = '';
 
   validate(): boolean {
     let isValid = true;
@@ -32,7 +34,7 @@ export class PaymentOptionsComponent implements OnInit {
     }
     return isValid;
   }
-  constructor(private paypalService: PaypalService, private router: Router,private route: ActivatedRoute,private authService:AuthService) {}
+  constructor(private paypalService: PaypalService, private router: Router,private route: ActivatedRoute,private authService:AuthService, private creditCardService: CreditCardService) {}
 
   ngOnInit(): void {
     //take token and decode it to get data
@@ -42,7 +44,7 @@ export class PaymentOptionsComponent implements OnInit {
         this.token=params['token'];
         this.authService.decodeToken(this.token).subscribe((response)=>{
           //need to load available payment methods
-          alert('token decoded successfully');
+          // alert('token decoded successfully');
           this.amount=response.amount;
           this.transactionId=response.transactionId;
           this.shopId=response.shopId;
@@ -92,6 +94,19 @@ export class PaymentOptionsComponent implements OnInit {
     }
     if (this.selectedBankCard) {
       // http zahtev da se validira acquirer
+      let body = {
+        "merchantOrderId": this.transactionId,
+        "amount": this.amount,
+        "merchantTimestamp": new Date(),
+        "merchantId": this.merchantId,
+      }
+      this.creditCardService.validateAcquirer(JSON.stringify(body)).subscribe((data)=>{
+        // alert('OK');
+        console.log(data)
+        window.location.href = data.paymentUrl
+      },(error)=>{
+        alert('Greska');
+      });
     }
   }
 }
