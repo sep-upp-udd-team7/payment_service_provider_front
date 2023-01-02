@@ -10,6 +10,9 @@ import { PaypalPaymentCancelledComponent } from './components/paypal-payment-can
 import { InternalErrorComponent } from './components/internal-error/internal-error.component';
 import { MerchantInfoComponent } from './components/merchant-info/merchant-info.component';
 import { NewPaymentOptionComponent } from './components/new-payment-option/new-payment-option.component';
+import { BankCancelComponent } from './components/bank-cancel/bank-cancel.component';
+import { BankSuccessComponent } from './components/bank-success/bank-success.component';
+import { BankFailedComponent } from './components/bank-failed/bank-failed.component';
 
 const routes: Routes = [
   {
@@ -51,9 +54,22 @@ const routes: Routes = [
     component: MerchantInfoComponent,
   },
   {
-    path: 'new-payment-option',
+    path: 'bank-cancel',
+    component: BankCancelComponent
+  },
+  {
+    path: 'bank-success',
+    component: BankSuccessComponent,
+  },
+  {
+    path: 'bank-failed',
+    component: BankFailedComponent,
+  },
+  {
+    path: "new-payment-option",
     component: NewPaymentOptionComponent,
   },
+  
 ];
 
 @NgModule({

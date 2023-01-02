@@ -23,6 +23,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { NewPaymentOptionComponent } from './components/new-payment-option/new-payment-option.component';
 import { MatSelectModule } from '@angular/material/select';
+import { BankCancelComponent } from './components/bank-cancel/bank-cancel.component';
+import { BankSuccessComponent } from './components/bank-success/bank-success.component';
+import { BankFailedComponent } from './components/bank-failed/bank-failed.component';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { MatSelectModule } from '@angular/material/select';
     PaypalPaymentCancelledComponent,
     InternalErrorComponent,
     MerchantInfoComponent,
-    NewPaymentOptionComponent
+    NewPaymentOptionComponent,
+    BankCancelComponent,
+    BankSuccessComponent,
+    BankFailedComponent
   ],
   imports: [
     BrowserModule,

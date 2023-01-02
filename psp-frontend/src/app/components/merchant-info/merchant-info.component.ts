@@ -28,6 +28,7 @@ export class MerchantInfoComponent implements OnInit {
 
   merchantId: string = '';
   merchantPassword: string = '';
+  apiKey: string = '';
   hide = true;
   selectedValue: string;
 
@@ -54,8 +55,6 @@ export class MerchantInfoComponent implements OnInit {
         alert(err.error)
         console.log(err.error)
       })
-
-    // alert('TODO: sacuvati u PSP podatke o web shopu')
   }
 
 }

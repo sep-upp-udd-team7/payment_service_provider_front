@@ -16,6 +16,7 @@ export class CreditCardService {
   private httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }
+  private creditCardController = bankUrl + '/credit-cards'
 
   getBanks() {
     const headers = new HttpHeaders({
@@ -27,5 +28,9 @@ export class CreditCardService {
 
   registerMerchant(body: any) {
     return this.http.post<any>(this.acquirerController + '/register', body, this.httpOptions)
+  }
+
+  validateAcquirer(body: any) {
+    return this.http.post<any>(this.creditCardController + '/startPayment', body, this.httpOptions)
   }
 }
