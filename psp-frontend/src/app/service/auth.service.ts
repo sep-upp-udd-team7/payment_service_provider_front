@@ -54,7 +54,7 @@ export class AuthService {
 
   decodeToken(token:string){
     const body={
-      'content':token
+      'token':token
     }
     return this._http.post<TransactionData>(`${this.url}/decode-token`,body);
   }

@@ -50,7 +50,7 @@ export class PaymentOptionsComponent implements OnInit {
           this.shopId=response.shopId;
         },
         (error)=>{
-          window.location.href="/internal-error"
+          //window.location.href="/internal-error"
         })
       }
     );
