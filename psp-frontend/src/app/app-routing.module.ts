@@ -1,3 +1,4 @@
+import { MerchantInfoQrCodeComponent } from './components/merchant-info-qr-code/merchant-info-qr-code.component';
 import { PersonalInfoComponent } from './components/personal-info/personal-info.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { LoginComponent } from './components/login/login.component';
@@ -68,6 +69,10 @@ const routes: Routes = [
   {
     path: "new-payment-option",
     component: NewPaymentOptionComponent,
+  },
+  {
+    path: 'merchant-info-qr-code',
+    component: MerchantInfoQrCodeComponent,
   },
   
 ];
