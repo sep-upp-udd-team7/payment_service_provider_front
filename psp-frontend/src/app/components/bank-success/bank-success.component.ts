@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { WebshopService } from 'src/app/service/webshop.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-bank-success',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bank-success.component.scss']
 })
 export class BankSuccessComponent implements OnInit {
+  returnUrl: string = '';
+  shopId: string = '';
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private webShopService: WebshopService
+  ) {}
 
   ngOnInit(): void {
   }
+
 
 }
