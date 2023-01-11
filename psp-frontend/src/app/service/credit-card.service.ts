@@ -33,4 +33,8 @@ export class CreditCardService {
   validateAcquirer(body: any) {
     return this.http.post<any>(this.creditCardController + '/startPayment', body, this.httpOptions)
   }
+
+  registerQrCodeMethod(body: any) {
+    return this.http.post<any>(this.acquirerController + '/registerQrCode', body, this.httpOptions)
+  }
 }

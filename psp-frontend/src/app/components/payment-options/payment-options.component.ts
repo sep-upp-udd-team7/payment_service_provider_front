@@ -92,13 +92,14 @@ export class PaymentOptionsComponent implements OnInit {
         alert('Greska');
       });
     }
-    if (this.selectedBankCard) {
+    if (this.selectedBankCard || this.selectedQr) {
       // http zahtev da se validira acquirer
       let body = {
         "merchantOrderId": this.transactionId,
         "amount": this.amount,
         "merchantTimestamp": new Date(),
         "merchantId": this.merchantId,
+        "qrCode": this.selectedQr
       }
       this.creditCardService.validateAcquirer(JSON.stringify(body)).subscribe((data)=>{
         // alert('OK');

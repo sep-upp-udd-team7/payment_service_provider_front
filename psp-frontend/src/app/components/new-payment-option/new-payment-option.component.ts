@@ -68,6 +68,9 @@ export class NewPaymentOptionComponent implements OnInit {
     if (this.selectedBankCard) {
       this.router.navigate(['merchant-info']);
     }
+    if(this.selectedQr){
+      this.router.navigate(['merchant-info-qr-code']);
+    }
   }
 
 }

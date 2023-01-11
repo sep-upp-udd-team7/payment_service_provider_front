@@ -26,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { BankCancelComponent } from './components/bank-cancel/bank-cancel.component';
 import { BankSuccessComponent } from './components/bank-success/bank-success.component';
 import { BankFailedComponent } from './components/bank-failed/bank-failed.component';
+import { MerchantInfoQrCodeComponent } from './components/merchant-info-qr-code/merchant-info-qr-code.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { BankFailedComponent } from './components/bank-failed/bank-failed.compon
     NewPaymentOptionComponent,
     BankCancelComponent,
     BankSuccessComponent,
-    BankFailedComponent
+    BankFailedComponent,
+    MerchantInfoQrCodeComponent
   ],
   imports: [
     BrowserModule,
