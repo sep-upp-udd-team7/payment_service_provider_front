@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/service/auth.service';
 import { CreditCardService } from 'src/app/service/credit-card.service';
+import { CryptoService } from 'src/app/service/crypto.service';
 import { PaypalService } from 'src/app/service/paypal.service';
 
 @Component({
@@ -34,7 +35,7 @@ export class PaymentOptionsComponent implements OnInit {
     }
     return isValid;
   }
-  constructor(private paypalService: PaypalService, private router: Router,private route: ActivatedRoute,private authService:AuthService, private creditCardService: CreditCardService) {}
+  constructor(private paypalService: PaypalService, private router: Router,private route: ActivatedRoute,private authService:AuthService, private creditCardService: CreditCardService, private cryptoService: CryptoService) {}
 
   ngOnInit(): void {
     //take token and decode it to get data
@@ -110,6 +111,17 @@ export class PaymentOptionsComponent implements OnInit {
           window.location.href = error.error
         }
       });
+    }
+    else if (this.selectedCrypto) {
+      this.cryptoService.createOrder(this.amount, this.transactionId, this.shopId, "").subscribe(
+        (data) => {
+          alert('Crypto order created');
+          window.location.href = data.payment_url
+        },
+        (error) => {
+          alert('Error: ' + error);
+        }
+      );
     }
   }
 }
