@@ -27,6 +27,7 @@ import { BankCancelComponent } from './components/bank-cancel/bank-cancel.compon
 import { BankSuccessComponent } from './components/bank-success/bank-success.component';
 import { BankFailedComponent } from './components/bank-failed/bank-failed.component';
 import { MerchantInfoQrCodeComponent } from './components/merchant-info-qr-code/merchant-info-qr-code.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { MerchantInfoQrCodeComponent } from './components/merchant-info-qr-code/
     MatIconModule,
     MatInputModule,
     MatSelectModule,
+    MatToolbarModule,
   ],
   providers: [
     {
