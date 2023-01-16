@@ -8,31 +8,31 @@
 			<div class="payment-type">
 				<h4>Choose payment method below</h4>
 				<div class="types flex justify-space-between">
-					<div class="type" [ngClass]="{'selected' : selectedBankCard}" (click)="bankCardPaymentSelected()">
+					<div class="type" *ngIf="bankAvailable" [ngClass]="{'selected' : selectedBankCard}" (click)="bankCardPaymentSelected()">
 						<div class="logo">
-							<!-- <i class="fa-solid fa-credit-card"></i> -->
+							
 						</div>
 						<div class="text">
 							<p>Pay with Credit Card</p>
 						</div>
 					</div>
-					<div class="type" [ngClass]="{'selected' : selectedPaypal}" (click)="paypalPaymentSelected()">
+					<div class="type" *ngIf="paypalAvailable" [ngClass]="{'selected' : selectedPaypal}" (click)="paypalPaymentSelected()">
 						<div class="logo">
-							<!-- <i class="fa-regular fa-credit-card"></i> -->
+							
 						</div>
 						<div class="text">
 							<p>Pay with PayPal</p>
 						</div>
 					</div>
-					<div class="type" [ngClass]="{'selected' : selectedCrypto}" (click)="cryptoPaymentSelected()">
+					<div class="type" *ngIf="cryptoAvailable" [ngClass]="{'selected' : selectedCrypto}" (click)="cryptoPaymentSelected()">
 						<div class="logo">
-							<!-- <i class="fa-brands fa-bitcoin"></i> -->
+							
 						</div>
 						<div class="text">
 							<p>Pay with Crypto</p>
 						</div>
 					</div>
-                    <div class="type" [ngClass]="{'selected' : selectedQr}" (click)="qrPaymentSelected()">
+                    <div class="type" *ngIf="qrAvailable" [ngClass]="{'selected' : selectedQr}" (click)="qrPaymentSelected()">
 						<div class="logo">
 							<!-- <i class="fa-brands fa-bitcoin"></i> -->
 						</div>

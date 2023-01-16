@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { authUrl } from '../app-global';
+import { PaymentMethod } from '../model/PaymentMethod';
 import { WebShopUrl } from '../model/WebShopUrl';
 import { AuthService } from './auth.service';
 
@@ -11,6 +12,7 @@ export class WebshopService {
   constructor(private _http: HttpClient,private authService:AuthService) {}
 
   private url = authUrl;
+  
 
   getWebShopUrls(shopId: string) {
     const headers = this.authService.generateAuthHeaders();
@@ -55,5 +57,11 @@ export class WebshopService {
         alert('Error');
       }
     );
+  }
+
+  loadPaymentOptions(shopId:string){
+    const headers=this.authService.generateAuthHeaders();
+    return this._http.get<PaymentMethod[]>(`${this.url}/payment-methods/${shopId}`,{headers:headers});
+    
   }
 }
