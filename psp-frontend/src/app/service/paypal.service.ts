@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { paypalUrl } from '../app-global';
 import { CreatePaypalPayment } from '../model/CreatePaypalPayment';
 import { ExecutePaypalPayment } from '../model/ExecutePaypalPayment';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class PaypalService {
   
   private url=paypalUrl;
 
-  constructor(private _http: HttpClient) {
+  constructor(private _http: HttpClient,private authService:AuthService) {
 
    }
 
@@ -22,12 +23,13 @@ export class PaypalService {
       transactionId:transactionId,
       shopId:shopId
     }
-    
-    return this._http.post<any>(`${this.url}/create-payment`,body);
+    const headers = this.authService.generateAuthHeaders();
+    return this._http.post<any>(`${this.url}/create-payment`,body, { headers: headers });
   }
 
   executePayment(body:ExecutePaypalPayment){
-    return this._http.post<any>(`${this.url}/execute`,body);
+    const headers = this.authService.generateAuthHeaders();
+    return this._http.post<any>(`${this.url}/execute`,body,{ headers: headers });
   }
 
   test(){
@@ -35,6 +37,7 @@ export class PaypalService {
   }
 
   cancelPayment(trancationId:string){
-    return this._http.get(`${this.url}/cancel-payment/${trancationId}`);
+    const headers = this.authService.generateAuthHeaders();
+    return this._http.get(`${this.url}/cancel-payment/${trancationId}`,{ headers: headers });
   }
 }

@@ -21,6 +21,7 @@ export class PaymentOptionsComponent implements OnInit {
   transactionId:string='';
   shopId:string='';
   merchantId: string = '';
+  accessToken:string='';
 
   validate(): boolean {
     let isValid = true;
@@ -49,9 +50,11 @@ export class PaymentOptionsComponent implements OnInit {
           this.amount=response.amount;
           this.transactionId=response.transactionId;
           this.shopId=response.shopId;
+          this.accessToken=response.accessToken;
+          this.authService.saveAccessTokenToLocalStorage(this.accessToken);
         },
         (error)=>{
-          //window.location.href="/internal-error"
+          alert('Something went wrong with token decoding');
         })
       }
     );

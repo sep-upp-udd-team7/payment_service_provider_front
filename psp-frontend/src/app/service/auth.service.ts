@@ -56,7 +56,24 @@ export class AuthService {
     const body={
       'token':token
     }
-    return this._http.post<TransactionData>(`${this.url}/decode-token`,body);
+    return this._http.post<TransactionData>(`${this.url}/decode-url-token`,body);
+  }
+
+  saveAccessTokenToLocalStorage(token:string){
+    localStorage.setItem('accessToken', token);
+  }
+
+  getAccessTokenFromLocalStorage(){
+    return localStorage.getItem('accessToken');
+  }
+
+  generateAuthHeaders() {
+    const jwt = this.getAccessTokenFromLocalStorage();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ` + jwt,
+    });
+    return headers;
   }
 
 

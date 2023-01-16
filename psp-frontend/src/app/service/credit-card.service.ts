@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { bankUrl, pspUrl } from '../app-global';
 import { Bank } from '../model/Bank';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CreditCardService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private authService:AuthService) { }
 
   private bankController = bankUrl + '/banks';
   private acquirerController = bankUrl + '/acquirers'
@@ -19,22 +20,22 @@ export class CreditCardService {
   private creditCardController = bankUrl + '/credit-cards'
 
   getBanks() {
-    const headers = new HttpHeaders({
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-   });
+    const headers = this.authService.generateAuthHeaders();
     return this.http.get<Bank[]>(this.bankController + '/getAll', {headers: headers} )
   }
 
   registerMerchant(body: any) {
-    return this.http.post<any>(this.acquirerController + '/register', body, this.httpOptions)
+    const headers = this.authService.generateAuthHeaders();
+    return this.http.post<any>(this.acquirerController + '/register', body, {headers: headers})
   }
 
   validateAcquirer(body: any) {
-    return this.http.post<any>(this.creditCardController + '/startPayment', body, this.httpOptions)
+    const headers = this.authService.generateAuthHeaders();
+    return this.http.post<any>(this.creditCardController + '/startPayment', body, {headers: headers})
   }
 
   registerQrCodeMethod(body: any) {
-    return this.http.post<any>(this.acquirerController + '/registerQrCode', body, this.httpOptions)
+    const headers = this.authService.generateAuthHeaders();
+    return this.http.post<any>(this.acquirerController + '/registerQrCode', body, {headers: headers})
   }
 }
