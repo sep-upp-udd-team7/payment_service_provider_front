@@ -33,6 +33,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ShopProfileComponent } from './components/shop-profile/shop-profile.component';
 import { RegisterPaypalPaymentComponent } from './components/register-paypal-payment/register-paypal-payment.component';
 import { RegisterCryptoPaymentComponent } from './components/register-crypto-payment/register-crypto-payment.component';
+import { CryptoCancelComponent } from './components/crypto-cancel/crypto-cancel.component';
+import { CryptoProcessingComponent } from './components/crypto-processing/crypto-processing.component';
 
 
 @NgModule({
@@ -56,7 +58,9 @@ import { RegisterCryptoPaymentComponent } from './components/register-crypto-pay
     SignInComponent,
     ShopProfileComponent,
     RegisterPaypalPaymentComponent,
-    RegisterCryptoPaymentComponent
+    RegisterCryptoPaymentComponent,
+    CryptoCancelComponent,
+    CryptoProcessingComponent
   ],
   imports: [
     BrowserModule,

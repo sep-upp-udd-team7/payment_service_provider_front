@@ -19,6 +19,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ShopProfileComponent } from './components/shop-profile/shop-profile.component';
 import { RegisterPaypalPaymentComponent } from './components/register-paypal-payment/register-paypal-payment.component';
 import { RegisterCryptoPaymentComponent } from './components/register-crypto-payment/register-crypto-payment.component';
+import { CryptoProcessingComponent } from './components/crypto-processing/crypto-processing.component';
+import { CryptoCancelComponent } from './components/crypto-cancel/crypto-cancel.component';
 
 const routes: Routes = [
   {
@@ -79,7 +81,6 @@ const routes: Routes = [
     path: 'add-qr/:id',
     component: MerchantInfoQrCodeComponent,
   },
-
   {
     path: 'register',
     component: RegistrationComponent,
@@ -101,9 +102,15 @@ const routes: Routes = [
   {
     path:'add-crypto/:id',
     component: RegisterCryptoPaymentComponent
-  }
-
-  
+  },
+  {
+    path: 'crypto-success/:orderId',
+    component: CryptoProcessingComponent,
+  },
+  {
+    path: 'crypto-cancel/:orderId',
+    component: CryptoCancelComponent,
+  },
   
 ];
 
