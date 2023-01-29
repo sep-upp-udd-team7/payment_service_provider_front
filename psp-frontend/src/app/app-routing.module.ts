@@ -14,22 +14,27 @@ import { NewPaymentOptionComponent } from './components/new-payment-option/new-p
 import { BankCancelComponent } from './components/bank-cancel/bank-cancel.component';
 import { BankSuccessComponent } from './components/bank-success/bank-success.component';
 import { BankFailedComponent } from './components/bank-failed/bank-failed.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { ShopProfileComponent } from './components/shop-profile/shop-profile.component';
+import { RegisterPaypalPaymentComponent } from './components/register-paypal-payment/register-paypal-payment.component';
+import { RegisterCryptoPaymentComponent } from './components/register-crypto-payment/register-crypto-payment.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    component: SignInComponent,
     pathMatch: 'full',
   },
 
-  {
-    path: 'signup',
-    component: SignUpComponent,
-  },
-  {
-    path: 'personal-info',
-    component: PersonalInfoComponent,
-  },
+  // {
+  //   path: 'signup',
+  //   component: SignUpComponent,
+  // },
+  // {
+  //   path: 'personal-info',
+  //   component: PersonalInfoComponent,
+  // },
   {
     path: 'paypal-success',
     component: PaypalSuccessComponent,
@@ -51,7 +56,7 @@ const routes: Routes = [
     component: InternalErrorComponent,
   },
   {
-    path: 'merchant-info',
+    path: 'add-bank/:id',
     component: MerchantInfoComponent,
   },
   {
@@ -71,9 +76,34 @@ const routes: Routes = [
     component: NewPaymentOptionComponent,
   },
   {
-    path: 'merchant-info-qr-code',
+    path: 'add-qr/:id',
     component: MerchantInfoQrCodeComponent,
   },
+
+  {
+    path: 'register',
+    component: RegistrationComponent,
+  },
+  {
+    path:'login',
+    component: SignInComponent
+  },
+  {
+    path:'profile',
+    component: ShopProfileComponent
+  },
+
+  {
+    path:'add-paypal/:id',
+    component: RegisterPaypalPaymentComponent
+  },
+
+  {
+    path:'add-crypto/:id',
+    component: RegisterCryptoPaymentComponent
+  }
+
+  
   
 ];
 

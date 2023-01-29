@@ -1,0 +1,56 @@
+<br />
+<h1 style="display: flex; margin: auto; justify-content: center">
+  Web shop registration for payment via PayPal
+</h1>
+<div style="margin: 10px">
+  <div
+    class="example-container"
+    style="margin: auto; display: flex; justify-content: center"
+  >
+    <form class="example-form" class="relative mb-3">
+      <mat-form-field appearance="fill" class="border-0 px-3 py-3">
+        <mat-label>Enter Client ID</mat-label>
+        <input
+          matInput
+          type="text"
+          name="merchantId"
+          [(ngModel)]="addingPaymentData.paymentApiClientId"
+          style="width: 400px"
+        /> </mat-form-field
+      ><br />
+
+      <mat-form-field appearance="fill" class="border-0 px-3 py-3">
+        <mat-label>Enter Client Secret</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          name="merchantPassword"
+          [(ngModel)]="addingPaymentData.paymentApiSecret"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <br />
+      <!-- <mat-form-field appearance="fill"  class="border-0 px-3 py-3">
+          <mat-label>API key</mat-label>
+          <input matInput type="text" name="apiKey" [(ngModel)]="apiKey" style="width: 400px;">
+        </mat-form-field><br> -->
+
+      <button
+        mat-raised-button
+        color="primary"
+        style="margin: auto; justify-content: center; display: flex"
+        (click)="addPaypalMethod()"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

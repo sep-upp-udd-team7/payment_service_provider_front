@@ -1,7 +1,9 @@
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CreditCardService } from 'src/app/service/credit-card.service';
 import { Bank } from './../../model/Bank';
 import { Component, OnInit } from '@angular/core';
+import { WebshopService } from '../../service/webshop.service';
+import { AddNewPaymentMethod } from '../../model/AddNewPaymentMethod';
 
 @Component({
   selector: 'app-merchant-info-qr-code',
@@ -10,9 +12,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MerchantInfoQrCodeComponent implements OnInit {
 
-  constructor(private creditCardService: CreditCardService, private router: Router) { }
+  constructor(private creditCardService: CreditCardService, private router: Router,private webShopService:WebshopService,private route:ActivatedRoute) { }
+
+  paymentMethodId:number;
+  addPaymentMethodData:AddNewPaymentMethod={
+    shopId: null,
+    paymentMethodId: 0,
+    paymentApiClientId: '',
+    paymentApiSecret: ''
+  }
 
   ngOnInit(): void {
+    this.route.params.subscribe((v) => {
+      this.paymentMethodId = v['id'];
+      console.log('payment method id',this.paymentMethodId);
+      console.log(v);
+    })
+    this.addPaymentMethodData.shopId=localStorage.getItem('shopId');
+    this.addPaymentMethodData.paymentMethodId=this.paymentMethodId
     this.creditCardService.getBanks().subscribe(
       data => {
         console.log(data)
@@ -32,7 +49,9 @@ export class MerchantInfoQrCodeComponent implements OnInit {
     if (this.merchantId == '' || this.merchantPassword == '') {
       return
     }
+    const shopId=localStorage.getItem('shopId');
     let body = {
+      "shopId":shopId,
       "id": "",
       "merchantId": this.merchantId,
       "merchantPassword": this.merchantPassword,
@@ -42,8 +61,10 @@ export class MerchantInfoQrCodeComponent implements OnInit {
     console.log(reqBody)
     this.creditCardService.registerQrCodeMethod(reqBody).subscribe(
       data => {
-        alert('Your web shop is registered for a new payment method - via QR code')
-        this.router.navigate([''])
+        this.webShopService.addPaymentMethod(this.addPaymentMethodData).subscribe(data=>{
+          alert('Your web shop is registered for a new payment method - via bank')
+          this.router.navigate(['/profile'])
+        })
       }, 
       err => {
         alert(err.error)

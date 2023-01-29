@@ -28,6 +28,11 @@ import { BankSuccessComponent } from './components/bank-success/bank-success.com
 import { BankFailedComponent } from './components/bank-failed/bank-failed.component';
 import { MerchantInfoQrCodeComponent } from './components/merchant-info-qr-code/merchant-info-qr-code.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { ShopProfileComponent } from './components/shop-profile/shop-profile.component';
+import { RegisterPaypalPaymentComponent } from './components/register-paypal-payment/register-paypal-payment.component';
+import { RegisterCryptoPaymentComponent } from './components/register-crypto-payment/register-crypto-payment.component';
 
 
 @NgModule({
@@ -46,7 +51,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     BankCancelComponent,
     BankSuccessComponent,
     BankFailedComponent,
-    MerchantInfoQrCodeComponent
+    MerchantInfoQrCodeComponent,
+    RegistrationComponent,
+    SignInComponent,
+    ShopProfileComponent,
+    RegisterPaypalPaymentComponent,
+    RegisterCryptoPaymentComponent
   ],
   imports: [
     BrowserModule,
