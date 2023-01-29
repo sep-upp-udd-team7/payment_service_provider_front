@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Bank } from 'src/app/model/Bank';
 import { CreditCardService } from 'src/app/service/credit-card.service';
+import { AddNewPaymentMethod } from '../../model/AddNewPaymentMethod';
+import { WebshopService } from '../../service/webshop.service';
 
 interface Food {
   value: string;
@@ -16,15 +18,31 @@ interface Food {
 })
 export class MerchantInfoComponent implements OnInit {
 
-  constructor(private creditCardService: CreditCardService, private router: Router) { }
+  constructor(private creditCardService: CreditCardService, private router: Router,private route:ActivatedRoute,private webShopService:WebshopService) { }
 
+  paymentMethodId:number=0;
+  
+  addPaymentMethodData:AddNewPaymentMethod={
+    shopId: null,
+    paymentMethodId: 0,
+    paymentApiClientId: '',
+    paymentApiSecret: ''
+  }
   ngOnInit(): void {
+    this.route.params.subscribe((v) => {
+      this.paymentMethodId = v['id'];
+      console.log('payment method id',this.paymentMethodId);
+      console.log(v);
+    })
+    this.addPaymentMethodData.shopId=localStorage.getItem('shopId');
+    this.addPaymentMethodData.paymentMethodId=this.paymentMethodId
     this.creditCardService.getBanks().subscribe(
       data => {
         console.log(data)
         this.banks = data;
       })
   }
+
 
   merchantId: string = '';
   merchantPassword: string = '';
@@ -38,7 +56,9 @@ export class MerchantInfoComponent implements OnInit {
     if (this.merchantId == '' || this.merchantPassword == '') {
       return
     }
+    const shopId=localStorage.getItem('shopId');
     let body = {
+      "shopId":shopId,
       "id": "",
       "merchantId": this.merchantId,
       "merchantPassword": this.merchantPassword,
@@ -48,8 +68,12 @@ export class MerchantInfoComponent implements OnInit {
     console.log(reqBody)
     this.creditCardService.registerMerchant(reqBody).subscribe(
       data => {
-        alert('Your web shop is registered for a new payment method - via bank')
-        this.router.navigate([''])
+        
+        this.webShopService.addPaymentMethod(this.addPaymentMethodData).subscribe(data=>{
+          alert('Your web shop is registered for a new payment method - via bank')
+          this.router.navigate(['/profile'])
+        })
+        
       }, 
       err => {
         alert(err.error)
