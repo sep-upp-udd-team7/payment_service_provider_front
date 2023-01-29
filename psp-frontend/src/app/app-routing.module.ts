@@ -14,6 +14,8 @@ import { NewPaymentOptionComponent } from './components/new-payment-option/new-p
 import { BankCancelComponent } from './components/bank-cancel/bank-cancel.component';
 import { BankSuccessComponent } from './components/bank-success/bank-success.component';
 import { BankFailedComponent } from './components/bank-failed/bank-failed.component';
+import { CryptoProcessingComponent } from './components/crypto-processing/crypto-processing.component';
+import { CryptoCancelComponent } from './components/crypto-cancel/crypto-cancel.component';
 
 const routes: Routes = [
   {
@@ -73,6 +75,14 @@ const routes: Routes = [
   {
     path: 'merchant-info-qr-code',
     component: MerchantInfoQrCodeComponent,
+  },
+  {
+    path: 'crypto-success/:orderId',
+    component: CryptoProcessingComponent,
+  },
+  {
+    path: 'crypto-cancel/:orderId',
+    component: CryptoCancelComponent,
   },
   
 ];

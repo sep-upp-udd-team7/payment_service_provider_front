@@ -25,4 +25,14 @@ export class CryptoService {
     
     return this._http.post<any>(`${this.url}/create-order`,body,{headers:headers});
   }
+
+  confirmOrder(orderId: string) {
+    const headers=this.authService.generateAuthHeaders();
+    return this._http.get<any>(`${this.url}/confirm-order/`+orderId,{headers:headers});
+  }
+
+  cancelOrder(orderId: string) {
+    const headers=this.authService.generateAuthHeaders();
+    return this._http.get<any>(`${this.url}/cancel-order/`+orderId,{headers:headers});
+  }
 }
