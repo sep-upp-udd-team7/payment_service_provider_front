@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
-  paypal_service_url:"http://localhost:8000/paypal-service",
-  bank_service_url:"http://localhost:8000/bank-service",
-  crypto_service_url:"http://localhost:8000/crypto-service",
-  auth_service_url:"http://localhost:8000/auth-service",
-  psp_backend:"http://localhost:8000/"
+  paypal_service_url:"https://localhost:8000/paypal-service",
+  bank_service_url:"https://localhost:8000/bank-service",
+  crypto_service_url:"https://localhost:8000/crypto-service",
+  auth_service_url:"https://localhost:8000/auth-service",
+  psp_backend:"https://localhost:8000/"
 };
 
 /*
