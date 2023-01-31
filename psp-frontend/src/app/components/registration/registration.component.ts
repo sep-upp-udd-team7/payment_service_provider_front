@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Registration } from '../../model/Registration';
 import { WebshopService } from '../../service/webshop.service';
@@ -16,13 +17,13 @@ export class RegistrationComponent implements OnInit {
     successUrl: '',
     cancelUrl: '',
     returnUrl: '',
-    using2FA : false
+    using2FA : true
 
   }
   finishedSignup = false;
   qrCode :any  = "";
 
-  constructor(private webShopService:WebshopService) { }
+  constructor(private webShopService:WebshopService, private router: Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.finishedSignup = false
@@ -41,6 +42,11 @@ export class RegistrationComponent implements OnInit {
 
       this.finishedSignup = true;
     })
+  }
+
+  login(){
+    this.router.navigate(['/login'])
+
   }
 
 }

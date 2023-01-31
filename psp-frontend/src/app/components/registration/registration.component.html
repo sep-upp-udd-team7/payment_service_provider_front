@@ -14,6 +14,10 @@
                     to use it later for login.</p>
                   <img class="col-md-12" src="{{qrCode}}" />  
                 </div>
+
+                <div class="mt-4 pt-2">
+                  <input class="btn btn-primary btn-lg" type="submit" value="Login"  (click)="login()"/>
+                </div>
               </div>
 
               <form *ngIf="!finishedSignup">
@@ -75,19 +79,7 @@
                   </div>
                 </div>
 
-                <div class="col-lg-12 no-pdd">
-                  <div class="checky-sec">
-                    <div class="fgt-sec">
-                      <input type="checkbox" name="cc" id="c1"
-                      (change)="registrationData.using2FA = !registrationData.using2FA">
-                      <label for="c1">
-                        <span></span>
-                      </label>
-                      <small>Use two step verification</small>
-                    </div><!--fgt-sec end--> 
-                  </div>
-                </div>
-  
+              
                 <div class="mt-4 pt-2">
                   <input class="btn btn-primary btn-lg" type="submit" value="Submit"  (click)="submit()"/>
                 </div>

@@ -11,10 +11,10 @@ import { faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 })
 export class SignInComponent implements OnInit {
 
-
   loginData:Login={
     mail: '',
-    password: ''
+    password: '',
+    code: ''
   }
   constructor(private webShopService:WebshopService,private authService:AuthService) { }
 
