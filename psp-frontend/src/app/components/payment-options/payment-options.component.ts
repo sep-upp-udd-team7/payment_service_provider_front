@@ -136,12 +136,11 @@ export class PaymentOptionsComponent implements OnInit {
         merchantOrderId: this.transactionId,
         amount: this.amount,
         merchantTimestamp: new Date(),
-        merchantId: this.merchantId,
+        shopId: this.shopId,
         qrCode: this.selectedQr,
       };
       this.creditCardService.validateAcquirer(JSON.stringify(body)).subscribe(
         (data) => {
-          // alert('OK');
           console.log(data);
           window.location.href = data.paymentUrl;
         },
