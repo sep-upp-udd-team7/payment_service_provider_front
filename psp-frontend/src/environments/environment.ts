@@ -8,7 +8,8 @@ export const environment = {
   bank_service_url:"http://localhost:8000/bank-service",
   crypto_service_url:"http://localhost:8000/crypto-service",
   auth_service_url:"http://localhost:8000/auth-service",
-  psp_backend:"http://localhost:8000/"
+  psp_backend:"http://localhost:8000/",
+  shopUrl:'http://localhost:4201'
 };
 
 /*

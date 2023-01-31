@@ -21,6 +21,8 @@ import { RegisterPaypalPaymentComponent } from './components/register-paypal-pay
 import { RegisterCryptoPaymentComponent } from './components/register-crypto-payment/register-crypto-payment.component';
 import { CryptoProcessingComponent } from './components/crypto-processing/crypto-processing.component';
 import { CryptoCancelComponent } from './components/crypto-cancel/crypto-cancel.component';
+import { PaypalSubscriptionConfirmComponent } from './components/paypal-subscription-confirm/paypal-subscription-confirm.component';
+import { PaypalSubscriptionCanceledComponent } from './components/paypal-subscription-canceled/paypal-subscription-canceled.component';
 
 const routes: Routes = [
   {
@@ -111,6 +113,16 @@ const routes: Routes = [
     path: 'crypto-cancel/:orderId',
     component: CryptoCancelComponent,
   },
+  {
+    path:'confirm-subscription',
+    component:PaypalSubscriptionConfirmComponent
+  },
+  {
+    path:'cancel-subscription',
+    component:PaypalSubscriptionCanceledComponent
+  }
+
+  
   
 ];
 

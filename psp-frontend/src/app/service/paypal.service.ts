@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { paypalUrl } from '../app-global';
@@ -39,5 +39,32 @@ export class PaypalService {
   cancelPayment(trancationId:string){
     const headers = this.authService.generateAuthHeaders();
     return this._http.get(`${this.url}/cancel-payment/${trancationId}`,{ headers: headers });
+  }
+
+  executeSubscription(token:string){
+    const headers = this.generateAuthHeaders();
+    return this._http.get(`${this.url}/subscriptions/execute/${token}`,{ headers: headers });
+  }
+
+  cancelSubscription(token:string){
+    const headers = this.generateAuthHeaders();
+    return this._http.get(`${this.url}/subscriptions/cancel/${token}`,{ headers: headers });
+  }
+
+
+
+
+
+
+
+
+
+  generateAuthHeaders() {
+    const jwt = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQYXltZW50U2VydmljZVByb3ZpZGVyIiwiY2xpZW50SWQiOiIxMjM0NTY3ODkiLCJleHAiOjE2NzU5MTg1NDd9.FaZcMIPs1vtuxpmZo_NLiA7eKUAT99PFS8r4Erv92Ck'
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ` + jwt,
+    });
+    return headers;
   }
 }
