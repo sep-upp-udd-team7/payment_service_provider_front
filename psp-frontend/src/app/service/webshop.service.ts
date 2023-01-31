@@ -28,19 +28,25 @@ export class WebshopService {
 
   confirmPayment(shopId: string, transactionId: string) {
     this.getWebShopUrls(shopId).subscribe(
-      (data) => {
-        const headers = this.authService.generateAuthHeaders();
-        this._http
-          .get<any>(`${data.successUrl}/${transactionId}`,{headers:headers})
-          .subscribe(
-            (data)=>{
-              window.location.href = '/paypal-success?shop_id=' + shopId;
-            },
-            (error) => {
-            alert('Error1');
-          });
+      (data) => 
+      // {
+      //   const headers = this.authService.generateAuthHeaders();
+      //   this._http
+      //     .get<any>(`${data.successUrl}/${transactionId}`,{headers:headers})
+      //     .subscribe(
+      //       (data)=>{
+      //         window.location.href = '/paypal-success?shop_id=' + shopId;
+      //       },
+      //       (error) => {
+      //       alert('Error1');
+      //     });
+      // },
+      {
+        console.log(data.successUrl);
+        window.location.href=data.successUrl+'/'+transactionId;
       },
-      (error) => {
+      (error) => 
+      {
         alert('Error2');
       }
     );
@@ -48,17 +54,22 @@ export class WebshopService {
 
   cancelPayment(shopId: string, transactionId: string) {
     this.getWebShopUrls(shopId).subscribe(
-      (data) => {
-        const headers = this.authService.generateAuthHeaders();
-        this._http
-          .get<any>(`${data.cancelUrl}/${transactionId}`,{headers:headers})
-          .subscribe(
-            (data)=>{
-              alert('Succesfully canceled');
-            },
-            (error) => {
-            alert('Error');
-          });
+      (data) => 
+      // {
+      //   const headers = this.authService.generateAuthHeaders();
+      //   this._http
+      //     .get<any>(`${data.cancelUrl}/${transactionId}`,{headers:headers})
+      //     .subscribe(
+      //       (data)=>{
+      //         alert('Succesfully canceled');
+      //       },
+      //       (error) => {
+      //       alert('Error');
+      //     });
+      // },
+      {
+        console.log(data.successUrl);
+        window.location.href=data.cancelUrl+'/'+transactionId;
       },
       (error) => {
         alert('Error');
