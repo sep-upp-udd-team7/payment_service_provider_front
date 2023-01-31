@@ -3,9 +3,20 @@
       <div class="row justify-content-center align-items-center h-100">
         <div class="col-12 col-lg-9 col-xl-7">
           <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-            <div class="card-body p-4 p-md-5">
+            <div class="card-body p-4 p-md-5" >
               <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-              <form>
+              <div *ngIf="finishedSignup"> 
+                <p style="font-weight: bold; text-align: center;">Verification email sent to {{registrationData.mail}}</p><br><br>
+
+                <div *ngIf="qrCode !== '' && qrCode !== undefined " >
+                  <p style="text-align:center; font-weight: bold;">
+                    Your registration is successful! Scan this QR code using Google Authenticator app on your phone 
+                    to use it later for login.</p>
+                  <img class="col-md-12" src="{{qrCode}}" />  
+                </div>
+              </div>
+
+              <form *ngIf="!finishedSignup">
   
                 <div class="row">
                   <div class="col-md-6 mb-4">
@@ -61,6 +72,19 @@
                       <label class="form-label" for="phoneNumber" >Error URL</label>
                     </div>
   
+                  </div>
+                </div>
+
+                <div class="col-lg-12 no-pdd">
+                  <div class="checky-sec">
+                    <div class="fgt-sec">
+                      <input type="checkbox" name="cc" id="c1"
+                      (change)="registrationData.using2FA = !registrationData.using2FA">
+                      <label for="c1">
+                        <span></span>
+                      </label>
+                      <small>Use two step verification</small>
+                    </div><!--fgt-sec end--> 
                   </div>
                 </div>
   
