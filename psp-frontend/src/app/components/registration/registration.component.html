@@ -79,9 +79,16 @@
                   </div>
                 </div>
 
-              
+                <div class="alert alert-danger" role="alert" *ngIf="!failedEmail">
+                  Invalid email format!
+                </div>
+
+                <div class="alert alert-danger" role="alert" *ngIf="!failedPassword">
+                  Password must contain minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.
+                </div>
                 <div class="mt-4 pt-2">
-                  <input class="btn btn-primary btn-lg" type="submit" value="Submit"  (click)="submit()"/>
+                  <input class="btn btn-primary btn-lg" type="submit" value="Submit"  (click)="submit()" [disabled] = "registrationData.mail === '' || registrationData.password === '' || registrationData.name === ''
+                  || registrationData.successUrl === '' || registrationData.cancelUrl === '' || registrationData.returnUrl === ''"/>
                 </div>
   
               </form>

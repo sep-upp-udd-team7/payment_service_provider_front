@@ -22,6 +22,8 @@ export class RegistrationComponent implements OnInit {
   }
   finishedSignup = false;
   qrCode :any  = "";
+  failedEmail = true;
+  failedPassword = true
 
   constructor(private webShopService:WebshopService, private router: Router, private route:ActivatedRoute) { }
 
@@ -30,6 +32,13 @@ export class RegistrationComponent implements OnInit {
   }
 
   submit(){
+
+    this.checkInput()
+
+    if(!this.failedEmail || !this.failedPassword){
+      return
+    }
+
     this.webShopService.registerShop(this.registrationData).subscribe((data)=>{
       if(this.registrationData.using2FA){ 
         this.qrCode = data.qrCode 
@@ -46,6 +55,29 @@ export class RegistrationComponent implements OnInit {
 
   login(){
     this.router.navigate(['/login'])
+
+  }
+
+
+  checkInput(){ 
+    let patternEmail = new RegExp('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}$')
+    let patternPass = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[-+_!@#$%^&*.,?:;<>=`~\\]\x22\x27\(\)\{\}\|\/\[\\\\?]).{8,}$')
+
+  
+
+    if(!patternEmail.test(this.registrationData.mail)){
+      this.failedEmail = false;
+    }
+    else{
+      this.failedEmail = true;
+    }
+
+    if(!patternPass.test(this.registrationData.password)){
+      this.failedPassword = false;
+    }
+    else{
+      this.failedPassword = true;
+    }
 
   }
 
