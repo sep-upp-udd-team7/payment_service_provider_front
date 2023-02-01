@@ -1,4 +1,5 @@
 export interface LoginResponse{
     token:string;
-    shopId:string;
+    shopId: string;
+    roles: string;
 }

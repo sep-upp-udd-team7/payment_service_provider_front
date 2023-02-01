@@ -37,6 +37,7 @@ import { CryptoCancelComponent } from './components/crypto-cancel/crypto-cancel.
 import { CryptoProcessingComponent } from './components/crypto-processing/crypto-processing.component';
 import { PaypalSubscriptionConfirmComponent } from './components/paypal-subscription-confirm/paypal-subscription-confirm.component';
 import { PaypalSubscriptionCanceledComponent } from './components/paypal-subscription-canceled/paypal-subscription-canceled.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { PaypalSubscriptionCanceledComponent } from './components/paypal-subscri
     CryptoCancelComponent,
     CryptoProcessingComponent,
     PaypalSubscriptionConfirmComponent,
-    PaypalSubscriptionCanceledComponent
+    PaypalSubscriptionCanceledComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,

@@ -23,6 +23,9 @@ import { CryptoProcessingComponent } from './components/crypto-processing/crypto
 import { CryptoCancelComponent } from './components/crypto-cancel/crypto-cancel.component';
 import { PaypalSubscriptionConfirmComponent } from './components/paypal-subscription-confirm/paypal-subscription-confirm.component';
 import { PaypalSubscriptionCanceledComponent } from './components/paypal-subscription-canceled/paypal-subscription-canceled.component';
+import { AuthGuard } from './service/auth.guard';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+
 
 const routes: Routes = [
   {
@@ -62,6 +65,8 @@ const routes: Routes = [
   {
     path: 'add-bank/:id',
     component: MerchantInfoComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['WEB_SHOP_ADMIN'] }
   },
   {
     path: 'bank-cancel',
@@ -78,10 +83,14 @@ const routes: Routes = [
   {
     path: "new-payment-option",
     component: NewPaymentOptionComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['WEB_SHOP_ADMIN'] }
   },
   {
     path: 'add-qr/:id',
     component: MerchantInfoQrCodeComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['WEB_SHOP_ADMIN'] }
   },
   {
     path: 'register',
@@ -93,17 +102,23 @@ const routes: Routes = [
   },
   {
     path:'profile',
-    component: ShopProfileComponent
+    component: ShopProfileComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['WEB_SHOP_ADMIN'] }
   },
 
   {
     path:'add-paypal/:id',
-    component: RegisterPaypalPaymentComponent
+    component: RegisterPaypalPaymentComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['WEB_SHOP_ADMIN'] }
   },
 
   {
     path:'add-crypto/:id',
-    component: RegisterCryptoPaymentComponent
+    component: RegisterCryptoPaymentComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['WEB_SHOP_ADMIN'] }
   },
   {
     path: 'crypto-success/:orderId',
@@ -120,6 +135,10 @@ const routes: Routes = [
   {
     path:'cancel-subscription',
     component:PaypalSubscriptionCanceledComponent
+  },
+  {
+    path: 'unauthorized',
+    component: UnauthorizedComponent
   }
 
   

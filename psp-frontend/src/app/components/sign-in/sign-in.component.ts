@@ -28,17 +28,19 @@ export class SignInComponent implements OnInit {
 
   login(){
     console.log(this.loginData);
+   
     this.checkInput()
 
     if(!this.failedCode || !this.failedEmail || !this.failedPassword){
       return
     }
-
+    
     this.webShopService.login(this.loginData).subscribe(data=>{
       console.log(data.token);
       console.log(data.shopId);
       this.authService.saveAccessTokenToLocalStorage(data.token);
-      localStorage.setItem('shopId',data.shopId);
+      localStorage.setItem('shopId', data.shopId);
+      localStorage.setItem('roles', data.roles);
       console.log(localStorage.getItem('shopId'));
       location.replace('/profile');
     },
