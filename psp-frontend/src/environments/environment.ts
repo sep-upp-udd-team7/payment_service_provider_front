@@ -4,12 +4,12 @@
 
 export const environment = {
   production: false,
-  paypal_service_url:"http://localhost:8000/paypal-service",
-  bank_service_url:"http://localhost:8000/bank-service",
-  crypto_service_url:"http://localhost:8000/crypto-service",
-  auth_service_url:"http://localhost:8000/auth-service",
-  psp_backend:"http://localhost:8000/",
-  shopUrl:'http://localhost:4201'
+  paypal_service_url:"http://192.168.238.103:8000/paypal-service",
+  bank_service_url:"http://192.168.238.103:8000/bank-service",
+  crypto_service_url:"http://192.168.238.103:8000/crypto-service",
+  auth_service_url:"http://192.168.238.103:8000/auth-service",
+  psp_backend:"http://192.168.238.103:8000/",
+  shopUrl:'http://192.168.238.147:4201'
 };
 
 /*
