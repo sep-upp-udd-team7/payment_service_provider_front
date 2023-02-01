@@ -9,7 +9,7 @@
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                   <input type="email" id="form2Example1" class="form-control" [(ngModel)]="loginData.mail" name="mail"/>
-                  <label class="form-label" for="form2Example1">Email address</label>
+                  <label class="form-label" for="form2Example1">Email address</label><br>
                 </div>
               
                 <!-- Password input -->
@@ -17,6 +17,27 @@
                   <input type="password" id="form2Example2" class="form-control" [(ngModel)]="loginData.password" name="password"/>
                   <label class="form-label" for="form2Example2">Password</label>
                 </div>
+
+                  <div class="form-group">
+                    <label for="code">Enter the 6-digit code from your authenticator app</label> 
+                    <input type="text" class="form-control" name="code" id="code" [(ngModel)]="loginData.code"  
+                    required minlength="6" maxlength="6" pattern="^[0-9]{1,6}$"/>
+                    <br><br>
+                    <div class="alert alert-danger" role="alert" *ngIf="!failedCode">
+                      Code must be 6 characters long and contains only digits!
+                    </div>
+
+                    <div class="alert alert-danger" role="alert" *ngIf="!failedEmail">
+                      Invalid email format!
+                    </div>
+
+                    <div class="alert alert-danger" role="alert" *ngIf="!failedPassword">
+                      Password must contain minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.
+                    </div>
+                  </div>
+                  <!-- <div class="form-group">
+                    <button class="btn btn-primary btn-block" (click)="onSubmit6Digit()">Sign in</button>
+                  </div>   -->
               
                 <!-- 2 column grid layout for inline styling -->
                 <div class="row mb-4">
@@ -30,7 +51,7 @@
                 </div>
               
                 <!-- Submit button -->
-                <button type="button" class="btn btn-primary btn-block mb-4" (click)="login()">Sign in</button>
+                <button type="button" class="btn btn-primary btn-block mb-4" (click)="login()" [disabled] = "loginData.code === '' || loginData.password === '' || loginData.mail === ''">Sign in</button>
               
                 <!-- Register buttons -->
                 <div class="text-center">

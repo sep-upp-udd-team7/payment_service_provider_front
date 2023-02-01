@@ -5,4 +5,5 @@ export interface Registration{
     successUrl:string;
     cancelUrl:string;
     returnUrl:string;
+    using2FA : boolean
 }
